@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>С 8 марта 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-start: #fdf2f8;
+      --bg-mid: #fce7f3;
+      --bg-end: #f5f3ff;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --accent: #db2777;
+      --accent-soft: #f472b6;
+      --text: #4c1d95;
+      --text-soft: #6b21a8;
+      --shadow: 0 25px 50px -12px rgba(219, 39, 119, 0.15);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(165deg, var(--bg-start) 0%, var(--bg-mid) 40%, var(--bg-end) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      overflow-x: hidden;
+      padding: 24px;
+    }
+
+    /* Floating hearts container */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.35;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 5s; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 1s; animation-duration: 7s; }
+    .heart:nth-child(3) { left: 45%; animation-delay: 2s; animation-duration: 6s; }
+    .heart:nth-child(4) { left: 65%; animation-delay: 0.5s; animation-duration: 8s; }
+    .heart:nth-child(5) { left: 85%; animation-delay: 1.5s; animation-duration: 5.5s; }
+    .heart:nth-child(6) { left: 15%; top: 60%; animation-delay: 2.5s; animation-duration: 6.5s; }
+    .heart:nth-child(7) { left: 75%; top: 70%; animation-delay: 0.8s; animation-duration: 7.5s; }
+    .heart:nth-child(8) { left: 50%; top: 80%; animation-delay: 1.2s; animation-duration: 5.8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.25; }
+      50% { transform: translateY(-20px) rotate(10deg); opacity: 0.45; }
+    }
+
+    .main {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      animation: cardIn 1s ease-out;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.2;
+      animation: textIn 0.8s ease-out 0.2s both;
+    }
+
+    .subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      font-weight: 300;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      animation: textIn 0.8s ease-out 0.4s both;
+    }
+
+    @keyframes textIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-wrap {
+      animation: textIn 0.8s ease-out 0.6s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(219, 39, 119, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(219, 39, 119, 0.5);
+      filter: brightness(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.glow {
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 4px 20px rgba(219, 39, 119, 0.4); }
+      to { box-shadow: 0 4px 32px rgba(219, 39, 119, 0.6); }
+    }
+
+    .surprise {
+      margin-top: 24px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease-out, opacity 0.5s ease-out, margin 0.5s ease;
+    }
+
+    .surprise.revealed {
+      max-height: 580px;
+      opacity: 1;
+    }
+
+    /* Слайдер карточек */
+    .slides-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .slides-track {
+      display: flex;
+      transition: transform 0.4s ease-out;
+      will-change: transform;
+    }
+
+    .slide-card {
+      flex: 0 0 100%;
+      min-width: 0;
+      background: linear-gradient(145deg, rgba(253, 242, 248, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 15px 40px -10px rgba(219, 39, 119, 0.2);
+      border: 1px solid rgba(219, 39, 119, 0.12);
+      text-align: center;
+    }
+
+    .slide-card .slide-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.45rem);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .slide-card .slide-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .slide-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.8vw, 1.2rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .slide-card .slide-photo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: block;
+      border: 3px solid var(--accent-soft);
+      box-shadow: 0 8px 24px rgba(219, 39, 119, 0.2);
+    }
+
+    /* Блок «Музыка про тебя» — треки с кнопками play */
+    .track-list {
+      list-style: none;
+      text-align: left;
+      padding: 0;
+      margin: 0;
+    }
+
+    .track-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(219, 39, 119, 0.15);
+    }
+
+    .track-item:last-child {
+      border-bottom: none;
+    }
+
+    .track-play {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-soft);
+      background: var(--card-bg);
+      color: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .track-play:hover {
+      background: var(--accent-soft);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .track-play.playing {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .track-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Сетка фото в слайде */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid rgba(219, 39, 119, 0.2);
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.15);
+    }
+
+    .slide-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .slide-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-soft);
+      background: var(--card-bg);
+      color: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .slide-nav-btn:hover {
+      background: var(--accent-soft);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .slide-nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      opacity: 0.4;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .slide-dot.active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* Кнопка музыки */
+    .music-wrap {
+      margin-bottom: 20px;
+    }
+
+    .btn-music {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid var(--accent-soft);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .btn-music:hover {
+      background: var(--accent-soft);
+      color: white;
+      transform: scale(1.03);
+    }
+
+    .btn-music.playing {
+      background: var(--accent-soft);
+      color: white;
+    }
+
+    .signature {
+      margin-top: auto;
+      padding-top: 48px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      opacity: 0.9;
+      animation: textIn 0.8s ease-out 0.8s both;
+    }
+
+    /* ----- Экраны: лампа → джинн → поздравление ----- */
+    .screen {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(165deg, var(--bg-start) 0%, var(--bg-mid) 40%, var(--bg-end) 100%);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Экран лампы */
+    .lamp-instruction {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .lamp-wrap {
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: 24px;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .lamp-wrap:active {
+      transform: scale(0.96);
+    }
+
+    .lamp {
+      width: 120px;
+      height: 140px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 30%, #b45309 70%, #78350f 100%);
+      border-radius: 8px 8px 50% 50%;
+      box-shadow: 0 20px 40px rgba(180, 83, 9, 0.35), inset 0 -8px 16px rgba(0,0,0,0.15);
+      position: relative;
+      transition: box-shadow 0.4s, filter 0.4s;
+    }
+
+    .lamp::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 20px;
+      background: #b45309;
+      border-radius: 4px;
+    }
+
+    .lamp.glow {
+      box-shadow: 0 0 40px 15px rgba(252, 211, 77, 0.6), 0 20px 40px rgba(180, 83, 9, 0.35);
+      filter: brightness(1.15);
+    }
+
+    .lamp-hint {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    /* Экран джинна */
+    .genie-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      box-shadow: var(--shadow);
+      max-width: 380px;
+      text-align: center;
+      animation: cardIn 0.6s ease-out;
+    }
+
+    .genie-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+      animation: geniePop 0.6s ease-out 0.3s both;
+    }
+
+    @keyframes geniePop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .genie-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 3.5vw, 1.35rem);
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .genie-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(13, 148, 136, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .genie-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 24px rgba(13, 148, 136, 0.5);
+    }
+
+    /* Поздравление показываем только после игры */
+    .screen-congrats .main {
+      min-height: auto;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 16px; }
+      .card { padding: 32px 24px; }
+      .surprise-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true">
+    <span class="heart">🌸</span>
+    <span class="heart">💕</span>
+    <span class="heart">🌸</span>
+    <span class="heart">💗</span>
+    <span class="heart">🌸</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">🌸</span>
+  </div>
+
+  <!-- Экран 1: Волшебная лампа -->
+  <div class="screen" id="screenLamp">
+    <p class="lamp-instruction">Жасмина, у тебя есть волшебная лампа.<br />Потри её — и джинн покажет сюрприз ✨</p>
+    <div class="lamp-wrap" id="lampWrap" role="button" aria-label="Потри лампу">
+      <div class="lamp" id="lamp"></div>
+    </div>
+    <p class="lamp-hint">Потри лампу пальцем или мышкой</p>
+  </div>
+
+  <!-- Экран 2: Джинн -->
+  <div class="screen hidden" id="screenGenie">
+    <div class="genie-card">
+      <span class="genie-emoji" aria-hidden="true">🧞</span>
+      <p class="genie-text">Ты как принцесса Жасмин — сильная, смелая и по-настоящему особенная. Джинн исполняет твоё желание: вот твой подарок! 💫</p>
+      <button type="button" class="genie-btn" id="genieBtn">Получить поздравление</button>
+    </div>
+  </div>
+
+  <!-- Экран 3: Поздравление -->
+  <div class="screen screen-congrats hidden" id="screenCongrats">
+  <main class="main">
+    <div class="card">
+      <h1 class="title">С 8 марта, Жасмина 🌸</h1>
+      <p class="subtitle">
+        Даже если между нами расстояние, мне хотелось сделать тебе что-то особенное.
+      </p>
+
+      <div class="music-wrap">
+        <button type="button" class="btn-music" id="musicBtn" aria-label="Выключить фоновую музыку">
+          🔊 Выключить музыку
+        </button>
+      </div>
+      <!-- Find You — запускается сама при открытии поздравления. Остальные 4 трека — в слайде «Музыка про тебя». -->
+      <audio id="findYouMusic" preload="metadata">
+        <source src="Essáy - Find You Feat. Ida Dillan (Feat. Ida Dillan).mp3" type="audio/mpeg" />
+      </audio>
+      <audio id="trackMusic" preload="none"></audio>
+
+      <div class="btn-wrap">
+        <button type="button" class="btn glow" id="surpriseBtn" aria-label="Открыть сюрприз">
+          Открыть сюрприз
+        </button>
+      </div>
+
+      <div class="surprise" id="surprise" role="region" aria-live="polite">
+        <div class="slides-wrap">
+          <div class="slides-track" id="slidesTrack">
+            <div class="slide-card">
+              <img class="slide-photo" src="Screenshot 2026-03-08 at 08.55.01.png" alt="Жасмина" onerror="this.style.display='none'" />
+              <span class="slide-icon">✨</span>
+              <h3 class="slide-title">Почему ты особенная</h3>
+              <p>Ты как принцесса Жасмин из сказки — сильная, смелая и по-настоящему своя. И у тебя очень красивые глаза. Ты не боишься быть собой и делаешь мир вокруг ярче.</p>
+            </div>
+            <div class="slide-card">
+              <span class="slide-icon">💖</span>
+              <h3 class="slide-title">Что я в тебе ценю</h3>
+              <p>Твою улыбку, поддержку и то, как ты относишься к людям. Ты умеешь слушать и быть рядом — это дорогого стоит.</p>
+            </div>
+            <div class="slide-card">
+              <span class="slide-icon">🤝</span>
+              <h3 class="slide-title">Обещание</h3>
+              <p>Я всегда буду на твоей стороне. Что бы ни было впереди — ты можешь на меня положиться.</p>
+            </div>
+            <div class="slide-card">
+              <span class="slide-icon">🌸</span>
+              <h3 class="slide-title">Главное</h3>
+              <p>Ты очень важна для меня. Спасибо, что ты есть. Пусть этот день будет тёплым и по-настоящему твоим.</p>
+            </div>
+            <div class="slide-card">
+              <span class="slide-icon">📷</span>
+              <h3 class="slide-title">Наши моменты</h3>
+              <div class="photo-grid">
+                <img src="Screenshot 2026-03-08 at 08.55.01.png" alt="Фото" />
+                <img src="Screenshot 2026-03-08 at 09.21.26.png" alt="Фото" />
+                <img src="Screenshot 2026-03-08 at 09.21.49.png" alt="Фото" />
+                <img src="Screenshot 2026-03-08 at 09.22.10.png" alt="Фото" />
+              </div>
+            </div>
+            <div class="slide-card">
+              <span class="slide-icon">🎵</span>
+              <h3 class="slide-title">Музыка, которая ассоциируется с тобой</h3>
+              <ul class="track-list">
+                <li class="track-item">
+                  <button type="button" class="track-play" data-src="lucaveros-ty-mne-nravishsja.mp3" aria-label="Играть Ты мне нравишься">▶</button>
+                  <span class="track-name">Ты мне нравишься</span>
+                </li>
+                <li class="track-item">
+                  <button type="button" class="track-play" data-src="LUCAVEROS - Ты всё для меня.mp3" aria-label="Играть Ты всё для меня">▶</button>
+                  <span class="track-name">Ты всё для меня</span>
+                </li>
+                <li class="track-item">
+                  <button type="button" class="track-play" data-src="Jah Khalib Printsessa I Nisciy.mp3" aria-label="Играть Принцесса">▶</button>
+                  <span class="track-name">Принцесса</span>
+                </li>
+                <li class="track-item">
+                  <button type="button" class="track-play" data-src="Elemeimin Асылым.mp3" aria-label="Играть Асылым">▶</button>
+                  <span class="track-name">Асылым</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="slide-nav">
+            <button type="button" class="slide-nav-btn" id="slidePrev" aria-label="Назад">‹</button>
+            <button type="button" class="slide-nav-btn" id="slideNext" aria-label="Вперёд">›</button>
+          </div>
+          <div class="slide-dots" id="slideDots"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="signature">С любовью и теплом 💕</p>
+  </main>
+  </div>
+
+  <script>
+    (function () {
+      var RUB_GOAL = 6;
+      var rubCount = 0;
+      var lamp = document.getElementById('lamp');
+      var lampWrap = document.getElementById('lampWrap');
+      var screenLamp = document.getElementById('screenLamp');
+      var screenGenie = document.getElementById('screenGenie');
+      var screenCongrats = document.getElementById('screenCongrats');
+      var genieBtn = document.getElementById('genieBtn');
+      var surpriseBtn = document.getElementById('surpriseBtn');
+      var surprise = document.getElementById('surprise');
+
+      function showScreen(el) {
+        [screenLamp, screenGenie, screenCongrats].forEach(function (s) {
+          s.classList.toggle('hidden', s !== el);
+        });
+      }
+
+      var lastRub = 0;
+      function onLampRub(e) {
+        if (e && e.type === 'touchstart') e.preventDefault();
+        var now = Date.now();
+        if (now - lastRub < 300) return;
+        lastRub = now;
+        rubCount++;
+        if (rubCount >= RUB_GOAL) {
+          lampWrap.removeEventListener('click', onLampRub);
+          lampWrap.removeEventListener('touchstart', onLampTouch);
+          lamp.classList.add('glow');
+          setTimeout(function () {
+            showScreen(screenGenie);
+          }, 700);
+        }
+      }
+
+      function onLampTouch(e) {
+        onLampRub(e);
+      }
+
+      if (lampWrap) {
+        lampWrap.addEventListener('click', onLampRub);
+        lampWrap.addEventListener('touchstart', onLampTouch, { passive: false });
+      }
+
+      if (genieBtn) {
+        genieBtn.addEventListener('click', function () {
+          showScreen(screenCongrats);
+          var findYou = document.getElementById('findYouMusic');
+          var musicBtn = document.getElementById('musicBtn');
+          if (findYou) {
+            findYou.play().catch(function () {});
+            if (musicBtn) {
+              musicBtn.textContent = '🔊 Выключить музыку';
+              musicBtn.classList.add('playing');
+            }
+          }
+        });
+      }
+
+      if (surpriseBtn && surprise) {
+        surpriseBtn.addEventListener('click', function () {
+          surprise.classList.add('revealed');
+          surpriseBtn.textContent = 'Сюрприз открыт 💖';
+          surpriseBtn.classList.remove('glow');
+          surpriseBtn.setAttribute('aria-label', 'Сюрприз открыт');
+        });
+      }
+
+      /* Слайдер карточек */
+      var slidesTrack = document.getElementById('slidesTrack');
+      var slidePrev = document.getElementById('slidePrev');
+      var slideNext = document.getElementById('slideNext');
+      var slideDots = document.getElementById('slideDots');
+      var slideCards = slidesTrack ? slidesTrack.querySelectorAll('.slide-card') : [];
+      var totalSlides = slideCards.length;
+      var currentSlide = 0;
+
+      function updateSlider() {
+        if (!slidesTrack) return;
+        slidesTrack.style.transform = 'translateX(-' + currentSlide * 100 + '%)';
+        if (slidePrev) slidePrev.disabled = currentSlide === 0;
+        if (slideNext) slideNext.disabled = currentSlide === totalSlides - 1;
+        var dots = slideDots ? slideDots.querySelectorAll('.slide-dot') : [];
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === currentSlide);
+        });
+      }
+
+      function buildDots() {
+        if (!slideDots || totalSlides === 0) return;
+        slideDots.innerHTML = '';
+        for (var i = 0; i < totalSlides; i++) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'slide-dot' + (i === 0 ? ' active' : '');
+          btn.setAttribute('aria-label', 'Слайд ' + (i + 1));
+          btn.addEventListener('click', function () {
+            currentSlide = parseInt(this.getAttribute('data-index'), 10);
+            updateSlider();
+          });
+          btn.setAttribute('data-index', i);
+          slideDots.appendChild(btn);
+        }
+      }
+
+      if (slidePrev) slidePrev.addEventListener('click', function () {
+        if (currentSlide > 0) { currentSlide--; updateSlider(); }
+      });
+      if (slideNext) slideNext.addEventListener('click', function () {
+        if (currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); }
+      });
+
+      /* Свайп */
+      var swipeStart = 0;
+      var swipeX = 0;
+      if (surprise) {
+        surprise.addEventListener('touchstart', function (e) {
+          swipeStart = e.touches[0].clientX;
+        }, { passive: true });
+        surprise.addEventListener('touchend', function (e) {
+          swipeX = e.changedTouches[0].clientX - swipeStart;
+          if (swipeX < -50 && currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); }
+          if (swipeX > 50 && currentSlide > 0) { currentSlide--; updateSlider(); }
+        }, { passive: true });
+      }
+
+      buildDots();
+      updateSlider();
+
+      /* Find You — фоновая музыка, кнопка вкл/выкл */
+      var findYouAudio = document.getElementById('findYouMusic');
+      var musicBtn = document.getElementById('musicBtn');
+      if (findYouAudio && musicBtn) {
+        musicBtn.addEventListener('click', function () {
+          if (findYouAudio.paused) {
+            findYouAudio.play().catch(function () {});
+            musicBtn.textContent = '🔊 Выключить музыку';
+            musicBtn.classList.add('playing');
+          } else {
+            findYouAudio.pause();
+            musicBtn.textContent = '🎵 Включить музыку';
+            musicBtn.classList.remove('playing');
+          }
+        });
+        findYouAudio.addEventListener('ended', function () {
+          musicBtn.textContent = '🎵 Включить музыку';
+          musicBtn.classList.remove('playing');
+        });
+      }
+
+      /* Четыре трека «Музыка про тебя» — только один играет */
+      var trackAudio = document.getElementById('trackMusic');
+      var trackBtns = document.querySelectorAll('.track-play');
+      var currentTrackBtn = null;
+
+      function stopAllTracks() {
+        if (trackAudio) trackAudio.pause();
+        trackBtns.forEach(function (b) {
+          b.classList.remove('playing');
+          b.textContent = '▶';
+        });
+        currentTrackBtn = null;
+      }
+
+      if (trackAudio) {
+        trackAudio.addEventListener('ended', function () {
+          stopAllTracks();
+        });
+      }
+
+      trackBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var src = this.getAttribute('data-src');
+          if (!src) return;
+          if (findYouAudio && !findYouAudio.paused) {
+            findYouAudio.pause();
+            if (musicBtn) {
+              musicBtn.textContent = '🎵 Включить музыку';
+              musicBtn.classList.remove('playing');
+            }
+          }
+          if (this.classList.contains('playing')) {
+            trackAudio.pause();
+            this.classList.remove('playing');
+            this.textContent = '▶';
+            currentTrackBtn = null;
+            return;
+          }
+          stopAllTracks();
+          trackAudio.src = src;
+          trackAudio.play().catch(function () {});
+          this.classList.add('playing');
+          this.textContent = '❚❚';
+          currentTrackBtn = this;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
